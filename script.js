@@ -10,7 +10,7 @@ const terminalLines = [
 
 const terminalEl = document.getElementById("terminal-text");
 
-function typeLine(line, delay = 60) {
+function typeLine(line, delay = 50) {
   return new Promise((resolve) => {
     let i = 0;
     function type() {
@@ -27,12 +27,14 @@ function typeLine(line, delay = 60) {
   });
 }
 
-async function runTerminalIntro() {
-  for (const line of terminalLines) {
-    await typeLine("> " + line);
-    await new Promise(r => setTimeout(r, 600));
+async function runTerminal() {
+  while (true) {
+    terminalEl.textContent = "";
+    for (const line of terminalLines) {
+      await typeLine(line);
+    }
+    await new Promise((r) => setTimeout(r, 3000));
   }
-  terminalEl.classList.add("blink");
 }
 
-window.onload = runTerminalIntro;
+runTerminal();
