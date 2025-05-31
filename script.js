@@ -1,68 +1,53 @@
-const terminalEl = document.getElementById("terminal-text");
-
 const terminalLines = [
-  "> Initializing cyberdeck...",
-  "> Boot sequence complete.",
-  "> Connecting to im-mcma@github.com...",
-  "> Access granted.",
-  "> Repositories loaded: 42",
-  "> Last commit: 2 hours ago",
-  "> Ready to disrupt the matrix.",
+  "Initializing cyberdeck...",
+  "Boot sequence complete.",
+  "Connecting to im-mcma@github.com...",
+  "Access granted.",
   "",
-  "🔮 𝕚𝕞_𝕒𝕓𝕚 - Creative Coder",
-  "------------------------------------------",
-  "🧠 Exploring beyond docs & syntax.",
-  "🧪 Building weird, chaotic, and fun tools.",
-  "🎯 Creating what shouldn't exist, but does.",
+  "Welcome, 𝕚𝕞_𝕒𝕓𝕚 🌙",
+  "Code isn’t just syntax — it’s rebellion wrapped in logic.",
   "",
-  "⚙️ Languages & Tools:",
-  "  • Python, Rust, C++, Java, Go, PHP",
-  "  • JavaScript, TypeScript, Shell, PowerShell",
-  "  • Lua, SQL, Swift, Haskell",
+  "🔮 Who Am I?",
+  " > A coder who explores beyond the docs.",
+  " > I build weird, experimental, sometimes useless — but fun — tools.",
+  " > I love creating things that shouldn't exist, but do.",
   "",
-  "📡 Contact: Telegram @im_abi_00",
+  "⚙️ Languages & Tools",
+  " > Python | Rust | C++ | Java | Go | PHP",
+  " > JavaScript | TypeScript | Shell | Lua | PowerShell",
+  " > SQL | Swift | Haskell",
   "",
-  "------------------------------------------",
-  "> End of session."
+  "📡 Contact",
+  " > Telegram: @im_abi_00",
+  "",
+  "Stay Weird. Stay Sharp. Stay 𝕚𝕞_𝕒𝕓𝕚 🌙"
 ];
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+const terminalEl = document.getElementById("terminal-text");
 
-async function typeLine(line, delay = 40) {
-  const lineEl = document.createElement("div");
-  
-  // Add command line style if line starts with '>'
-  if (line.startsWith(">")) {
-    lineEl.classList.add("command-line");
-  } else if (line.match(/^🔮|🧠|🧪|🎯|⚙️|📡/)) {
-    lineEl.classList.add("about-line");
-  }
-  
-  terminalEl.appendChild(lineEl);
-  
-  for (let i = 0; i < line.length; i++) {
-    const span = document.createElement("span");
-    span.textContent = line.charAt(i);
-    
-    // Add flicker effect for matrix chars randomly for command lines
-    if (line.startsWith(">") && Math.random() < 0.1) {
-      span.classList.add("matrix-char");
+function typeLine(line, delay = 50) {
+  return new Promise((resolve) => {
+    let i = 0;
+    function type() {
+      if (i < line.length) {
+        terminalEl.textContent += line.charAt(i);
+        i++;
+        setTimeout(type, delay);
+      } else {
+        terminalEl.textContent += "\n";
+        resolve();
+      }
     }
-    
-    lineEl.appendChild(span);
-    await sleep(delay);
-  }
-  terminalEl.appendChild(document.createElement("br"));
-  terminalEl.scrollTop = terminalEl.scrollHeight;
+    type();
+  });
 }
 
-async function runTerminal() {
+async function runTerminalIntro() {
   for (const line of terminalLines) {
-    await typeLine(line);
-    await sleep(500);
+    await typeLine("> " + line);
+    await new Promise((r) => setTimeout(r, 500));
   }
+  terminalEl.classList.add("blink");
 }
 
-window.onload = runTerminal;
+window.onload = runTerminalIntro;
