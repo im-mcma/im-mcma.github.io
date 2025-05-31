@@ -10,7 +10,7 @@ html, body {
   width: 100%;
   font-family: 'Courier New', Courier, monospace;
   background: black;
-  color: #00ff94;
+  color: #00ffaa; /* Adjusted from bright green to soft green */
   overflow: hidden;
 }
 
@@ -20,16 +20,16 @@ html, body {
   top: 0; left: 0; right: 0; bottom: 0;
   background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
   background-size: cover;
-  filter: brightness(0.45) contrast(1.2);
+  filter: brightness(0.6) contrast(1.1); /* Improved visibility */
   z-index: -2;
 }
 
-/* Purple haze overlay */
+/* Overlay */
 #background::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(171, 76, 255, 0.2) 0%, rgba(171, 76, 255, 0.05) 50%, rgba(171, 76, 255, 0.2) 100%);
+  background: linear-gradient(90deg, rgba(171, 76, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(171, 76, 255, 0.05) 100%);
   pointer-events: none;
   mix-blend-mode: screen;
   z-index: -1;
@@ -41,17 +41,17 @@ html, body {
   max-width: 900px;
   height: 85vh;
   margin: 5vh auto;
-  background: rgba(12, 12, 20, 0.85);
-  border: 2px solid #ab4cffcc;
+  background: rgba(20, 20, 30, 0.85); /* Darker and cooler than previous purple */
+  border: 2px solid #00897b; /* Teal-ish border instead of purple */
   border-radius: 15px;
-  box-shadow: 0 0 20px #ab4cff66;
-  color: #00ff94;
+  box-shadow: 0 0 20px #00897b66; /* Matching shadow */
+  color: #00ffaa;
   font-size: 1.15rem;
   line-height: 1.4;
   padding: 25px 30px;
   overflow-y: auto;
   white-space: pre-wrap;
-  text-shadow: 0 0 5px #00ff94;
+  text-shadow: 0 0 5px #00ffaa;
   font-weight: 500;
   user-select: text;
   position: relative;
@@ -65,7 +65,7 @@ html, body {
   left: 30px;
   width: 10px;
   height: 20px;
-  background: #00ff94;
+  background: #00ffaa;
   border-radius: 2px;
   animation: blinkCursor 1s steps(2, start) infinite;
 }
@@ -80,6 +80,6 @@ html, body {
   width: 6px;
 }
 #terminal::-webkit-scrollbar-thumb {
-  background-color: #ab4cff80;
+  background-color: #00897b;
   border-radius: 4px;
 }
