@@ -16,11 +16,10 @@ html, body {
 
 /* Background */
 #background {
-  position: fixed;
+ position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: url('https://raw.githubusercontent.com/im-mcma/File/main/myphoto.jpg') no-repeat center center;
   background-size: cover;
-  filter: none; /* No filter for full visibility */
   z-index: -2;
 }
 
