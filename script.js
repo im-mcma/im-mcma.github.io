@@ -1,27 +1,25 @@
-const logoText = "𝕚𝕞_𝕒𝕓𝕚🌙";
 const terminalLines = [
   "Initializing cyberdeck...",
-  "Loading neural scripts...",
-  "Connecting to GitHub...",
-  "User: im-mcma",
-  "Repositories: 42",
+  "Boot sequence complete.",
+  "Connecting to im-mcma@github.com...",
+  "Access granted.",
+  "Repositories loaded: 42",
   "Last commit: 2 hours ago",
-  "Loading projects...",
-  "Welcome to the future of coding."
+  "Ready to disrupt the matrix."
 ];
 
-const logoEl = document.getElementById("logo");
 const terminalEl = document.getElementById("terminal-text");
 
-function typeText(element, text, delay = 80) {
+function typeLine(line, delay = 60) {
   return new Promise((resolve) => {
     let i = 0;
     function type() {
-      if (i < text.length) {
-        element.textContent += text.charAt(i);
+      if (i < line.length) {
+        terminalEl.textContent += line.charAt(i);
         i++;
         setTimeout(type, delay);
       } else {
+        terminalEl.textContent += "\n";
         resolve();
       }
     }
@@ -29,19 +27,12 @@ function typeText(element, text, delay = 80) {
   });
 }
 
-async function runTerminal() {
-  // تایپ لوگو اول
-  await typeText(logoEl, logoText, 150);
-  logoEl.classList.add("blink");
-  await new Promise(r => setTimeout(r, 800));
-  logoEl.classList.remove("blink");
-
-  // تایپ متن ترمینال خط به خط
+async function runTerminalIntro() {
   for (const line of terminalLines) {
-    terminalEl.textContent += "\n> ";
-    await typeText(terminalEl, line, 50);
-    await new Promise(r => setTimeout(r, 500));
+    await typeLine("> " + line);
+    await new Promise(r => setTimeout(r, 600));
   }
+  terminalEl.classList.add("blink");
 }
 
-window.onload = runTerminal;
+window.onload = runTerminalIntro;
