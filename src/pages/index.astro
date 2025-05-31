@@ -1,0 +1,82 @@
+---
+import Terminal from '../components/Terminal.astro';
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>𝕚𝕞_𝕒𝕓𝕚 🌙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        height: 100vh;
+        background: url('/background.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Orbitron', sans-serif;
+        color: #fff;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+      }
+      h1 {
+        font-size: 3rem;
+        color: #ff6fff;
+        text-shadow: 0 0 30px #ff00cc;
+        user-select: none;
+        margin-bottom: 0.5rem;
+      }
+      .typed-text {
+        font-size: 1.2rem;
+        color: #00ffcc;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 10px #00ffaa;
+      }
+      .links a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #00ffaa;
+        font-size: 1rem;
+        transition: 0.3s;
+      }
+      .links a:hover {
+        color: #ff00cc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>𝕚𝕞_𝕒𝕓𝕚 🌙</h1>
+    <div id="typed-text" class="typed-text"></div>
+    <div class="links">
+      <a href="https://t.me/im_abi_oo" target="_blank"><i class="fab fa-telegram"></i> Support</a>
+      <a href="https://github.com/im-mcma/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://t.me/cryptofree_abi" target="_blank"><i class="fas fa-bullhorn"></i> Channel</a>
+    </div>
+    <Terminal />
+    <script>
+      const strings = ["HELLO WORLD 👋", "BOT ACTIVE 🤖", "I'M ATOMIC 💜", "SYSTEM ONLINE 🔥"];
+      const typedText = document.getElementById("typed-text");
+      let i = 0, j = 0, current = "", isDeleting = false;
+      function type() {
+        if (!isDeleting && j <= strings[i].length) {
+          current = strings[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          current = strings[i].substring(0, j--);
+        }
+        typedText.innerHTML = current;
+        let speed = isDeleting ? 80 : 120;
+        if (!isDeleting && j === strings[i].length) {
+          isDeleting = true; speed = 1800;
+        } else if (isDeleting && j === 0) {
+          isDeleting = false; i = (i + 1) % strings.length; speed = 600;
+        }
+        setTimeout(type, speed);
+      }
+      type();
+    </script>
+  </body>
+</html>
