@@ -5,107 +5,127 @@
   box-sizing: border-box;
 }
 
-/* فونت */
 body {
   font-family: 'Poppins', sans-serif;
-  background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
-  background-size: cover;
   color: #d4c1ff;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  direction: rtl;
+  background: #2a0e4b; /* fallback */
 }
 
-/* Overlay بنفش تاریک روی بک‌گراند */
 .background {
   position: fixed;
   inset: 0;
-  background: rgba(62, 19, 82, 0.85);
-  backdrop-filter: blur(4px);
+  background:
+    linear-gradient(
+      rgba(62, 19, 82, 0.15),
+      rgba(62, 19, 82, 0.35)
+    ),
+    url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(2px);
   z-index: -1;
 }
 
-/* کانتینر اصلی */
 .container {
-  max-width: 900px;
-  margin: 5rem auto 3rem;
+  max-width: 850px;
+  margin: 3rem auto 5rem auto;
   padding: 2rem 2.5rem;
-  background: rgba(29, 10, 50, 0.8);
+  background: rgba(50, 20, 90, 0.5);
   border-radius: 18px;
-  box-shadow: 0 0 25px #8f57ffaa;
+  box-shadow: 0 0 30px rgba(171, 76, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(10px);
+  color: #e0d6ff;
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  color: #bb86fc;
   text-align: center;
-  user-select: none;
+  text-shadow: 0 0 15px #bb86fc;
+  margin-bottom: 0.3rem;
 }
 
-/* لوگو بزرگ */
-#logo {
-  font-weight: 900;
-  font-size: 4rem;
-  color: #b69fff;
-  text-shadow:
-    0 0 7px #ac7eff,
-    0 0 20px #a76fff,
-    0 0 40px #d2b3ffcc;
-  letter-spacing: 7px;
-  margin-bottom: 1.5rem;
+header .tagline {
+  text-align: center;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: #d7caffcc;
+  margin-bottom: 2rem;
+  font-style: italic;
 }
 
-/* ترمینال intro */
-.terminal-intro pre {
-  background: rgba(68, 34, 102, 0.85);
-  border-radius: 15px;
-  padding: 1.8rem 2rem;
-  font-family: 'Courier New', Courier, monospace;
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: #d1aaff;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #bb86fc66;
+  padding-bottom: 0.3rem;
+}
+
+.about p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #d7caffcc;
+}
+
+.github-link {
   font-size: 1.15rem;
-  line-height: 1.5;
-  color: #c9baff;
-  box-shadow: inset 0 0 25px #a276ffcc;
-  max-height: 220px;
-  overflow-y: auto;
-  user-select: text;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  margin-bottom: 3rem;
-}
-
-/* لینک گیت‌هاب */
-.github-link a {
-  display: inline-block;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #c1a7ff;
-  border-bottom: 2.3px solid #c1a7ff;
-  padding-bottom: 5px;
-  transition: all 0.3s ease;
-  user-select: text;
-  cursor: pointer;
-  text-decoration: none;
-  letter-spacing: 0.8px;
-}
-
-.github-link a:hover {
-  color: #e3d3ff;
-  border-color: #e3d3ff;
-  text-shadow: 0 0 15px #d4bfff;
-  transform: scale(1.05);
-}
-
-/* فوتر */
-footer p {
-  margin-top: 4rem;
   font-weight: 600;
-  color: #bdaeffcc;
-  font-size: 1rem;
-  text-shadow: 0 0 10px #8b72ff55;
+  color: #bb86fc;
+  text-decoration: none;
+  display: inline-block;
+  word-break: break-all;
+  transition: color 0.3s ease;
+}
+
+.github-link:hover {
+  color: #d4c1ff;
+  text-decoration: underline;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.stack-grid div {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #e1d4ff;
+  backdrop-filter: saturate(150%) blur(6px);
+  border: 1.5px solid #bb86fc77;
+  box-shadow: 0 0 8px #bb86fc88;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+
+.stack-grid div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px #bb86fccc;
+}
+
+footer {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #b39ddb;
+  text-shadow: 0 0 10px #bb86fc55;
+  margin-top: 3rem;
   user-select: none;
-}
-
-/* Blink Cursor Animation */
-.blink {
-  animation: blink-caret 1s step-start infinite;
-  color: #ac7eff;
-}
-
-@keyframes blink-caret {
-  50% { opacity: 0; }
 }
