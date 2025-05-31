@@ -14,28 +14,28 @@ html, body {
   overflow: hidden;
 }
 
-/* Background Image with filters */
+/* Background */
 #background {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
   background-size: cover;
-  filter: brightness(0.5) contrast(1.1);
+  filter: brightness(0.45) contrast(1.2);
   z-index: -2;
 }
 
-/* Overlay with subtle purple tint */
+/* Purple haze overlay */
 #background::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(171, 76, 255, 0.15) 0%, rgba(171, 76, 255, 0.05) 50%, rgba(171, 76, 255, 0.15) 100%);
+  background: linear-gradient(90deg, rgba(171, 76, 255, 0.2) 0%, rgba(171, 76, 255, 0.05) 50%, rgba(171, 76, 255, 0.2) 100%);
   pointer-events: none;
   mix-blend-mode: screen;
   z-index: -1;
 }
 
-/* Terminal Container */
+/* Terminal box */
 #terminal {
   width: 90vw;
   max-width: 900px;
@@ -44,14 +44,14 @@ html, body {
   background: rgba(12, 12, 20, 0.85);
   border: 2px solid #ab4cffcc;
   border-radius: 15px;
-  box-shadow: 0 0 15px #ab4cff88;
+  box-shadow: 0 0 20px #ab4cff66;
   color: #00ff94;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.4;
-  padding: 20px 30px;
+  padding: 25px 30px;
   overflow-y: auto;
   white-space: pre-wrap;
-  text-shadow: 0 0 6px #00ff94;
+  text-shadow: 0 0 5px #00ff94;
   font-weight: 500;
   user-select: text;
   position: relative;
@@ -61,46 +61,25 @@ html, body {
 #terminal.blink::after {
   content: "";
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
   left: 30px;
-  width: 8px;
-  height: 22px;
+  width: 10px;
+  height: 20px;
   background: #00ff94;
   border-radius: 2px;
   animation: blinkCursor 1s steps(2, start) infinite;
 }
 
 @keyframes blinkCursor {
-  0% { opacity: 1; }
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
-/* Matrix-like animated background characters (optional) */
-.matrix-char {
-  color: #00ff94;
-  text-shadow: 0 0 5px #00ff94;
-}
-
-/* Command prompt line */
-.command-line {
-  color: #a57eff;
-  font-weight: 700;
-}
-
-/* About section inside terminal */
-.about-line {
-  color: #c9aaff;
-  font-style: italic;
-  margin-left: 2ch;
-  user-select: text;
-}
-
-/* Scrollbar styling */
+/* Scrollbar */
 #terminal::-webkit-scrollbar {
   width: 6px;
 }
 #terminal::-webkit-scrollbar-thumb {
-  background-color: #ab4cff88;
-  border-radius: 5px;
+  background-color: #ab4cff80;
+  border-radius: 4px;
 }
