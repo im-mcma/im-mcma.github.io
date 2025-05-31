@@ -1,0 +1,94 @@
+---
+---
+<div id="terminal">
+  <div id="terminal-text"></div>
+</div>
+
+<style>
+#terminal {
+  width: 90vw;
+  max-width: 900px;
+  height: 85vh;
+  margin: 2rem auto;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00ffaa;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffaa88;
+  color: #00ffaa;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 20px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-weight: 500;
+  position: relative;
+}
+#terminal.blink::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 10px;
+  height: 18px;
+  background: #00ffaa;
+  animation: blink 1s steps(2, start) infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+</style>
+
+<script>
+  const terminalLines = [
+    "Initializing cyberdeck...",
+    "Boot sequence complete.",
+    "Connecting to im-mcma@github.com...",
+    "Access granted.",
+    "",
+    "Welcome, 𝕚𝕞_𝕒𝕓𝕚 🌙",
+    "Code isn’t just syntax — it’s rebellion wrapped in logic.",
+    "",
+    "🔮 Who Am I?",
+    " > A coder who explores beyond the docs.",
+    " > I build weird, experimental, sometimes useless — but fun — tools.",
+    "",
+    "⚙️ Languages & Tools",
+    " > Python | Rust | C++ | Java | Go | PHP",
+    " > JavaScript | TypeScript | Shell | Lua | PowerShell",
+    " > SQL | Swift | Haskell",
+    "",
+    "📡 Contact",
+    " > Telegram: @im_abi_oo",
+    "",
+    "Stay Weird. Stay Sharp. Stay 𝕚𝕞_𝕒𝕓𝕚 🌙"
+  ];
+
+  const terminalEl = document.getElementById("terminal-text");
+
+  function typeLine(line, delay = 40) {
+    return new Promise((resolve) => {
+      let i = 0;
+      function type() {
+        if (i < line.length) {
+          terminalEl.textContent += line.charAt(i++);
+          setTimeout(type, delay);
+        } else {
+          terminalEl.textContent += "\n";
+          resolve();
+        }
+      }
+      type();
+    });
+  }
+
+  async function runTerminal() {
+    for (const line of terminalLines) {
+      await typeLine("> " + line);
+      await new Promise((r) => setTimeout(r, 300));
+    }
+    document.getElementById("terminal").classList.add("blink");
+  }
+
+  window.onload = runTerminal;
+</script>
