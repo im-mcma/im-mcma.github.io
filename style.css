@@ -1,134 +1,109 @@
-/* Reset & Global */
+/* Reset */
 * {
-  margin: 0; padding: 0; box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+/* فونت */
 body {
-  font-family: 'Orbitron', monospace, sans-serif;
-  background: #0d001f;
-  color: #c5b1ff;
-  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #d4c1ff;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
-/* Background Grid + Noise */
+/* Overlay بنفش تاریک روی بک‌گراند */
 .background {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background:
-    radial-gradient(circle at center, #4b0082 0%, #0d001f 70%),
-    repeating-linear-gradient(0deg, rgba(171, 76, 255, 0.05) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgba(171, 76, 255, 0.05) 0 1px, transparent 1px 5px);
+  inset: 0;
+  background: rgba(62, 19, 82, 0.85);
+  backdrop-filter: blur(4px);
   z-index: -1;
-  filter: contrast(1.2) brightness(0.9);
-  animation: flicker 3s infinite alternate;
 }
 
-/* Flicker Animation for Cyberpunk Vibe */
-@keyframes flicker {
-  0%, 100% { filter: contrast(1.2) brightness(0.9); }
-  50% { filter: contrast(1.4) brightness(1); }
-}
-
-/* Container */
+/* کانتینر اصلی */
 .container {
   max-width: 900px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: rgba(24, 1, 42, 0.7);
-  border-radius: 20px;
-  box-shadow: 0 0 30px #ab4cffcc;
-  backdrop-filter: blur(10px);
-}
-
-/* Header */
-header h1#logo {
-  font-size: 3.5rem;
-  color: #b55cff;
-  text-shadow:
-    0 0 8px #9e3cff,
-    0 0 20px #ab4cff,
-    0 0 40px #ab4cff,
-    0 0 80px #b55cff;
-  letter-spacing: 5px;
+  margin: 5rem auto 3rem;
+  padding: 2rem 2.5rem;
+  background: rgba(29, 10, 50, 0.8);
+  border-radius: 18px;
+  box-shadow: 0 0 25px #8f57ffaa;
   text-align: center;
-  margin-bottom: 0.3rem;
   user-select: none;
-  white-space: nowrap;
 }
 
-/* Subtitle */
-.subtitle {
-  font-size: 1.2rem;
-  color: #d0bfffaa;
-  text-align: center;
-  font-style: italic;
+/* لوگو بزرگ */
+#logo {
+  font-weight: 900;
+  font-size: 4rem;
+  color: #b69fff;
+  text-shadow:
+    0 0 7px #ac7eff,
+    0 0 20px #a76fff,
+    0 0 40px #d2b3ffcc;
+  letter-spacing: 7px;
+  margin-bottom: 1.5rem;
+}
+
+/* ترمینال intro */
+.terminal-intro pre {
+  background: rgba(68, 34, 102, 0.85);
+  border-radius: 15px;
+  padding: 1.8rem 2rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #c9baff;
+  box-shadow: inset 0 0 25px #a276ffcc;
+  max-height: 220px;
+  overflow-y: auto;
+  user-select: text;
+  white-space: pre-wrap;
+  word-wrap: break-word;
   margin-bottom: 3rem;
 }
 
-/* Terminal Intro */
-.intro-terminal pre {
-  background: #1a004d;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow:
-    inset 0 0 20px #ab4cff88,
-    0 0 15px #ab4cffaa;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #d0bfff;
-  overflow-x: auto;
-  max-height: 300px;
-}
-
-/* GitHub Info */
-.github-info {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.github-info h2 {
-  color: #b55cff;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 15px #ab4cffaa;
-}
-
-.github-info p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: #ccc;
-}
-
-.github-info a {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #bb86fc;
-  text-decoration: none;
-  border-bottom: 1.5px solid #bb86fc;
+/* لینک گیت‌هاب */
+.github-link a {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #c1a7ff;
+  border-bottom: 2.3px solid #c1a7ff;
+  padding-bottom: 5px;
   transition: all 0.3s ease;
+  user-select: text;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.8px;
 }
 
-.github-info a:hover {
-  color: #d8afff;
-  border-color: #d8afff;
+.github-link a:hover {
+  color: #e3d3ff;
+  border-color: #e3d3ff;
+  text-shadow: 0 0 15px #d4bfff;
+  transform: scale(1.05);
 }
 
-/* Footer */
-footer {
+/* فوتر */
+footer p {
   margin-top: 4rem;
-  text-align: center;
+  font-weight: 600;
+  color: #bdaeffcc;
   font-size: 1rem;
-  color: #bbaaffcc;
+  text-shadow: 0 0 10px #8b72ff55;
   user-select: none;
-  text-shadow: 0 0 8px #ab4cff55;
 }
 
-/* Cursor blink for terminal text */
+/* Blink Cursor Animation */
 .blink {
   animation: blink-caret 1s step-start infinite;
-  color: #bb86fc;
+  color: #ac7eff;
 }
 
 @keyframes blink-caret {
