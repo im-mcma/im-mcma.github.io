@@ -2,71 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>𝕚𝕞_𝕒𝕓𝕚🌙 | Creative Coder</title>
-  <link href="style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>𝕚𝕌_𝕚𝕞_𝕒𝕓𝕚🌙 | Into The Abyss</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: url('photo/myphoto.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #eee;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      background-color: rgba(10, 0, 25, 0.7);
+      backdrop-filter: blur(8px);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+      color: #dcd3ff;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: glowFade 3s ease-in-out infinite alternate;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      color: #bb86fc;
+      text-shadow: 0 0 20px #ab4cff, 0 0 30px #ab4cff;
+    }
+
+    .manifesto {
+      text-align: center;
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 4rem;
+      color: #ccc;
+    }
+
+    .tech-stack {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid #ab4cff44;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #ab4cff22;
+      margin-bottom: 3rem;
+    }
+
+    .tech-stack pre {
+      color: #9effff;
+      font-size: 1rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+
+    .github {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .github a {
+      color: #ffb3ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .github a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 5rem;
+      font-size: 0.95rem;
+      color: #aaa;
+      text-shadow: 0 0 6px #ab4cff44;
+    }
+
+    @keyframes glowFade {
+      from { text-shadow: 0 0 10px #ab4cff; }
+      to   { text-shadow: 0 0 30px #ab4cff; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Intro Animation -->
-  <div class="intro">
-    <div class="intro-logo">𝕚𝕞_𝕒𝕓𝕚🌙</div>
-  </div>
-
-  <!-- Main Content -->
+  <div class="overlay"></div>
   <div class="container">
-    <header>
-      <h1>𝕚𝕞_𝕒𝕓𝕚🌙</h1>
-      <p class="headline">"Code isn’t just syntax — it’s a portal to new worlds."</p>
-      <p class="tagline">Not the best, just the most creative.</p>
-    </header>
+    <div class="intro">
+      <h1>𝕚𝕌_𝕚𝕞_𝕒𝕓𝕚🌙</h1>
+    </div>
 
-    <section class="about">
-      <h2>🔮 Who Am I?</h2>
-      <ul>
-        <li>🧠 A creative mind exploring the weird side of code</li>
-        <li>🧪 Projects born from curiosity and chaos</li>
-        <li>🎯 Building what doesn’t exist — yet</li>
-      </ul>
-    </section>
+    <div class="manifesto">
+      <p>"Not here to fit in. I'm here to rewrite the damn matrix."
+      <br>Just code. Pure chaos. Beautiful symmetry.</p>
+    </div>
 
-    <section class="skills">
-      <h2>⚙️ Languages & Tools</h2>
-      <div class="stack-grid">
-        <div>Python</div>
-        <div>Java</div>
-        <div>JavaScript</div>
-        <div>C++</div>
-        <div>Rust</div>
-        <div>PHP</div>
-        <div>Go</div>
-        <div>Swift</div>
-        <div>TypeScript</div>
-        <div>SQL</div>
-        <div>Haskell</div>
-        <div>Lua</div>
-        <div>Shell</div>
-        <div>PowerShell</div>
-      </div>
-    </section>
+    <div class="tech-stack">
+      <pre>
+> languages = ["Python", "C++", "JavaScript", "Rust", "Go", "Haskell"]
+> tools = ["Linux", "Git", "Docker", "VSCode", "Neovim"]
+> ideology = "Build what doesn't exist."
+      </pre>
+    </div>
 
-    <section class="contact">
-      <h2>📡 Contact</h2>
-      <p>Telegram: <a href="https://t.me/im_abi_00">@im_abi_00</a></p>
-    </section>
+    <div class="github">
+      <p>Enter the Lab: <a href="https://github.com/im-mcma" target="_blank">github.com/im-mcma</a></p>
+    </div>
 
     <footer>
-      <h3>Stay Weird. Stay Sharp. Stay 𝕚𝕞_𝕒𝕓𝕚🌙</h3>
+      <p>© 2025 𝕚𝕞_𝕒𝕓𝕚🌙 — Transmitting from the dark side of logic.</p>
     </footer>
   </div>
-
-  <!-- JS to hide intro -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const intro = document.querySelector('.intro');
-      setTimeout(() => {
-        intro.style.display = 'none';
-      }, 3200); // Matches CSS animation duration
-    });
-  </script>
 </body>
 </html>
