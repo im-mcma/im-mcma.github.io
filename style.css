@@ -1,185 +1,164 @@
-/* style.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
-
-:root {
-  --neon-purple: #b388ff;
-  --neon-glow: #e0b3ff;
-  --bg-color: #0a0a0a;
-  --text-color: #f0f0f0;
-  --accent: #8000ff;
-  --deep-purple: #1e0033;
+/* ========== Global Reset & Font ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Fira Code', monospace;
-  background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('photo/myphoto.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: var(--text-color);
-  backdrop-filter: blur(6px);
-  animation: fadeBackground 1.2s ease-out;
+  color: #eee;
+  overflow-x: hidden;
 }
 
+/* ========== Intro Animation ========== */
 .intro {
   position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, var(--deep-purple), var(--accent));
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #4e2a84, #1a082d);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: introFadeOut 3.2s ease-in-out forwards;
+  animation: fadeOut 3.2s ease forwards;
 }
 
 .intro-logo {
-  font-size: 4rem;
-  color: white;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px var(--neon-glow), 0 0 40px var(--accent);
-  opacity: 0;
-  animation: logoEntrance 2s ease-out forwards 0.8s;
+  font-size: 3.5rem;
+  color: #fff;
+  text-shadow: 0 0 15px #ab4cff, 0 0 25px #ab4cff;
+  animation: introPop 3s ease;
+  font-weight: bold;
 }
 
+/* ========== Main Layout ========== */
 .container {
-  max-width: 900px;
-  margin: 0 auto;
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 0 20px var(--neon-purple);
+  max-width: 900px;
+  margin: auto;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(171, 76, 255, 0.3);
 }
 
+/* ========== Header ========== */
 header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 3rem;
-  color: var(--neon-glow);
-  text-shadow: 0 0 10px var(--neon-purple);
-  opacity: 0;
-  animation: zoomInGlow 1s ease-out forwards 3.5s;
+header h1 {
+  font-size: 2.8rem;
+  color: #d3a4ff;
+  text-shadow: 0 0 10px #ab4cff;
 }
 
-.headline {
+header .headline {
   font-size: 1.2rem;
-  color: var(--neon-purple);
-  opacity: 0;
-  animation: fadeIn 1s ease-out 4s forwards;
-}
-
-.tagline {
   font-style: italic;
+  margin-top: 0.5rem;
+  color: #ccc;
+}
+
+header .tagline {
+  font-size: 1rem;
+  margin-top: 0.2rem;
   color: #aaa;
-  opacity: 0;
-  animation: fadeIn 1s ease-out 4.5s forwards;
 }
 
+/* ========== Sections ========== */
 section {
-  margin-bottom: 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s ease-out forwards;
+  margin-bottom: 2.5rem;
 }
-
-section:nth-of-type(1) { animation-delay: 5s; }
-section:nth-of-type(2) { animation-delay: 5.5s; }
-section:nth-of-type(3) { animation-delay: 6s; }
 
 h2 {
-  color: var(--accent);
-  border-bottom: 1px solid var(--neon-purple);
-  padding-bottom: 0.3rem;
+  color: #e3bfff;
+  border-bottom: 1px solid #8882;
+  padding-bottom: 0.4rem;
   margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
+ul li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+/* ========== Stack Grid ========== */
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
 }
 
-a {
-  color: var(--neon-glow);
+.stack-grid div {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #eee;
+  font-weight: 500;
+  backdrop-filter: blur(3px);
+  border: 1px solid #ab4cff33;
+  box-shadow: 0 0 6px #ab4cff22;
+  transition: transform 0.2s ease;
+}
+
+.stack-grid div:hover {
+  transform: translateY(-4px);
+}
+
+/* ========== Contact ========== */
+.contact a {
+  color: #bb86fc;
   text-decoration: none;
+  font-weight: bold;
 }
 
-a:hover {
-  color: white;
-  text-shadow: 0 0 8px var(--neon-purple);
+.contact a:hover {
+  text-decoration: underline;
 }
 
+/* ========== Footer ========== */
 footer {
   text-align: center;
-  padding-top: 1rem;
-  border-top: 1px solid var(--neon-purple);
-  font-weight: bold;
-  color: var(--neon-glow);
+  margin-top: 3rem;
+  font-size: 1.1rem;
+  color: #bbb;
+  text-shadow: 0 0 8px #ab4cff44;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomInGlow {
+/* ========== Animations ========== */
+@keyframes introPop {
   0% {
     opacity: 0;
-    transform: scale(0.8);
-    text-shadow: none;
+    transform: scale(0.8) rotate(0deg);
   }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    text-shadow: 0 0 15px var(--neon-purple);
-  }
-}
-
-@keyframes fadeBackground {
-  from {
-    filter: brightness(0);
-  }
-  to {
-    filter: brightness(1);
-  }
-}
-
-@keyframes logoEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.7) rotate(-15deg);
-  }
-  60% {
+  50% {
     opacity: 1;
     transform: scale(1.05) rotate(2deg);
   }
   100% {
-    transform: scale(1) rotate(0deg);
+    opacity: 0;
+    transform: scale(1.2) rotate(-4deg);
   }
 }
 
-@keyframes introFadeOut {
+@keyframes fadeOut {
   0% {
     opacity: 1;
-    transform: scale(1);
   }
-  85% {
-    opacity: 1;
-    transform: scale(1);
+  90% {
+    opacity: 0.1;
   }
   100% {
     opacity: 0;
-    transform: scale(1.05);
     visibility: hidden;
   }
 }
