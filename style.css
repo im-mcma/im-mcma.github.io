@@ -1,60 +1,64 @@
 /* Reset */
 * {
-  margin: 0; padding: 0; box-sizing: border-box;
-  font-family: 'Courier New', Courier, monospace;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Background */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  background: black;
+  color: #00ff94;
+  overflow: hidden;
+}
+
+/* Background Image with filters */
 #background {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
   background-size: cover;
-  filter: brightness(0.15) contrast(1.2);
-  z-index: -1;
+  filter: brightness(0.5) contrast(1.1);
+  z-index: -2;
 }
 
-/* Overlay matrix effect */
+/* Overlay with subtle purple tint */
 #background::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(171,76,255,0.3) 0%, rgba(0,255,140,0.15) 50%, rgba(171,76,255,0.3) 100%);
+  background: linear-gradient(90deg, rgba(171, 76, 255, 0.15) 0%, rgba(171, 76, 255, 0.05) 50%, rgba(171, 76, 255, 0.15) 100%);
   pointer-events: none;
   mix-blend-mode: screen;
+  z-index: -1;
 }
 
-/* Terminal container */
+/* Terminal Container */
 #terminal {
   width: 90vw;
   max-width: 900px;
   height: 85vh;
   margin: 5vh auto;
-  background: rgba(10,10,20,0.75);
-  border: 2px solid #ab4cff;
+  background: rgba(12, 12, 20, 0.85);
+  border: 2px solid #ab4cffcc;
   border-radius: 15px;
-  box-shadow: 0 0 25px #ab4cff88;
+  box-shadow: 0 0 15px #ab4cff88;
   color: #00ff94;
   font-size: 1.2rem;
   line-height: 1.4;
   padding: 20px 30px;
   overflow-y: auto;
   white-space: pre-wrap;
-  text-shadow:
-    0 0 6px #00ff94,
-    0 0 12px #ab4cff,
-    0 0 20px #ab4cff;
+  text-shadow: 0 0 6px #00ff94;
   font-weight: 500;
   user-select: text;
   position: relative;
-  font-family: 'Courier New', Courier, monospace;
 }
 
-/* Terminal blinking cursor */
-#terminal::after {
+/* Blinking cursor */
+#terminal.blink::after {
   content: "";
   position: absolute;
   bottom: 20px;
@@ -67,53 +71,36 @@
 }
 
 @keyframes blinkCursor {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* Scrollbar styling */
-#terminal::-webkit-scrollbar {
-  width: 8px;
-}
-
-#terminal::-webkit-scrollbar-track {
-  background: rgba(171, 76, 255, 0.1);
-  border-radius: 4px;
-}
-
-#terminal::-webkit-scrollbar-thumb {
-  background: #ab4cffaa;
-  border-radius: 4px;
-}
-
-/* Matrix rain effect inside terminal text */
+/* Matrix-like animated background characters (optional) */
 .matrix-char {
   color: #00ff94;
-  text-shadow:
-    0 0 5px #00ff94,
-    0 0 10px #ab4cff,
-    0 0 20px #ab4cff;
+  text-shadow: 0 0 5px #00ff94;
 }
 
-/* Highlight for commands */
+/* Command prompt line */
 .command-line {
-  color: #ab4cff;
+  color: #a57eff;
   font-weight: 700;
 }
 
-/* About section styling inside terminal */
+/* About section inside terminal */
 .about-line {
-  color: #d0aaff;
+  color: #c9aaff;
   font-style: italic;
   margin-left: 2ch;
   user-select: text;
 }
 
-/* Responsive font size */
-@media (max-width: 600px) {
-  #terminal {
-    font-size: 1rem;
-    padding: 15px 20px;
-    height: 75vh;
-  }
+/* Scrollbar styling */
+#terminal::-webkit-scrollbar {
+  width: 6px;
+}
+#terminal::-webkit-scrollbar-thumb {
+  background-color: #ab4cff88;
+  border-radius: 5px;
 }
