@@ -10,7 +10,7 @@ html, body {
   width: 100%;
   font-family: 'Courier New', Courier, monospace;
   background: black;
-  color: #00ffaa; /* Adjusted from bright green to soft green */
+  color: #00ffaa;
   overflow: hidden;
 }
 
@@ -18,9 +18,9 @@ html, body {
 #background {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
+  background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center;
   background-size: cover;
-  filter: brightness(0.6) contrast(1.1); /* Improved visibility */
+  filter: none; /* No filter for full visibility */
   z-index: -2;
 }
 
@@ -29,9 +29,8 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(171, 76, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(171, 76, 255, 0.05) 100%);
+  background: transparent; /* No overlay */
   pointer-events: none;
-  mix-blend-mode: screen;
   z-index: -1;
 }
 
@@ -41,10 +40,10 @@ html, body {
   max-width: 900px;
   height: 85vh;
   margin: 5vh auto;
-  background: rgba(20, 20, 30, 0.85); /* Darker and cooler than previous purple */
-  border: 2px solid #00897b; /* Teal-ish border instead of purple */
+  background: rgba(0, 0, 0, 0.6); /* Slightly transparent black */
+  border: 2px solid #00897b;
   border-radius: 15px;
-  box-shadow: 0 0 20px #00897b66; /* Matching shadow */
+  box-shadow: 0 0 20px #00897b66;
   color: #00ffaa;
   font-size: 1.15rem;
   line-height: 1.4;
