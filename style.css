@@ -1,211 +1,119 @@
 /* Reset */
 * {
   margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
+/* Background */
+#background {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: url('https://raw.githubusercontent.com/im-mcma/File/refs/heads/main/myphoto.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #ddd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Overlay purple tint */
-body::before {
-  content: "";
-  position: fixed;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(102, 0, 204, 0.7);
+  filter: brightness(0.15) contrast(1.2);
   z-index: -1;
-  backdrop-filter: blur(6px);
 }
 
-/* Container */
-.container {
-  background: rgba(20, 0, 40, 0.9);
-  border-radius: 24px;
-  box-shadow: 0 0 35px #9b59b6cc;
-  max-width: 720px;
-  width: 100%;
-  padding: 3rem 3.5rem;
-  color: #eee;
-  text-align: center;
-  user-select: none;
+/* Overlay matrix effect */
+#background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(171,76,255,0.3) 0%, rgba(0,255,140,0.15) 50%, rgba(171,76,255,0.3) 100%);
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-h1 {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: 4rem;
-  color: #9b59b6;
-  text-shadow: 0 0 25px #9b59b6aa;
-  margin-bottom: 0.3rem;
-}
-
-.tagline {
-  font-style: italic;
-  font-weight: 300;
-  font-size: 1.3rem;
-  color: #c39bd3aa;
-  margin-bottom: 3rem;
-  user-select: text;
-}
-
-h2 {
-  font-weight: 600;
-  font-size: 2rem;
-  color: #b78de3;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-h3 {
-  font-weight: 600;
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
-  color: #c8a2ff;
-  user-select: none;
-}
-
-ul {
-  list-style: none;
-  padding-left: 1rem;
-  text-align: left;
-  margin-bottom: 2.5rem;
-  font-weight: 300;
-  font-size: 1.15rem;
-  color: #e0d8f7;
-  line-height: 1.5;
-  user-select: text;
-}
-
-ul li {
-  margin-bottom: 0.7rem;
-}
-
-.skill-group {
-  margin-bottom: 2rem;
-}
-
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: start;
-}
-
-.badges img {
-  height: 30px;
-  filter: drop-shadow(0 0 1px #6a1b9a);
-  transition: transform 0.3s ease;
-}
-
-.badges img:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 4px #bb86fc);
-  cursor: pointer;
-}
-
-.github-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 3rem 0;
-  user-select: none;
-}
-
-.github-stats img {
-  max-width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 0 30px #7e57c2bb;
-}
-
-.contact p {
+/* Terminal container */
+#terminal {
+  width: 90vw;
+  max-width: 900px;
+  height: 85vh;
+  margin: 5vh auto;
+  background: rgba(10,10,20,0.75);
+  border: 2px solid #ab4cff;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #ab4cff88;
+  color: #00ff94;
   font-size: 1.2rem;
-  font-weight: 300;
-  color: #cbb9ffcc;
-  user-select: text;
-}
-
-.contact a {
-  color: #bb86fc;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.contact a:hover {
-  color: #e0c3ff;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-footer {
-  margin-top: 3rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  font-size: 1.6rem;
-  color: #a67cffdd;
-  user-select: none;
-}
-
-/* Terminal Section */
-.terminal-section {
-  background: #330066dd;
-  border-radius: 16px;
-  padding: 1.8rem 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  color: #9dffca;
-  font-size: 1.1rem;
-  min-height: 220px;
-  white-space: pre-wrap;
-  box-shadow: 0 0 30px #66ffccaa;
-  margin: 2rem auto 4rem;
-  max-width: 720px;
+  line-height: 1.4;
+  padding: 20px 30px;
   overflow-y: auto;
-  text-align: left;
+  white-space: pre-wrap;
+  text-shadow:
+    0 0 6px #00ff94,
+    0 0 12px #ab4cff,
+    0 0 20px #ab4cff;
+  font-weight: 500;
+  user-select: text;
+  position: relative;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Terminal blinking cursor */
+#terminal::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  width: 8px;
+  height: 22px;
+  background: #00ff94;
+  border-radius: 2px;
+  animation: blinkCursor 1s steps(2, start) infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* Scrollbar styling */
+#terminal::-webkit-scrollbar {
+  width: 8px;
+}
+
+#terminal::-webkit-scrollbar-track {
+  background: rgba(171, 76, 255, 0.1);
+  border-radius: 4px;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+  background: #ab4cffaa;
+  border-radius: 4px;
+}
+
+/* Matrix rain effect inside terminal text */
+.matrix-char {
+  color: #00ff94;
+  text-shadow:
+    0 0 5px #00ff94,
+    0 0 10px #ab4cff,
+    0 0 20px #ab4cff;
+}
+
+/* Highlight for commands */
+.command-line {
+  color: #ab4cff;
+  font-weight: 700;
+}
+
+/* About section styling inside terminal */
+.about-line {
+  color: #d0aaff;
+  font-style: italic;
+  margin-left: 2ch;
   user-select: text;
 }
 
-/* Blink cursor */
-.blink {
-  border-right: 2px solid #9dffca;
-  animation: blink-caret 1s step-start infinite;
-}
-
-@keyframes blink-caret {
-  0%, 50% { border-right: 2px solid #9dffca; }
-  50.01%, 100% { border-right: none; }
-}
-
-/* Responsive */
+/* Responsive font size */
 @media (max-width: 600px) {
-  .container {
-    padding: 2rem 2.5rem;
-  }
-  h1 {
-    font-size: 3rem;
-  }
-  h2 {
-    font-size: 1.6rem;
-  }
-  h3 {
-    font-size: 1.1rem;
-  }
-  .terminal-section {
+  #terminal {
     font-size: 1rem;
-    min-height: 180px;
-    max-height: 180px;
-  }
-  .badges img {
-    height: 24px;
+    padding: 15px 20px;
+    height: 75vh;
   }
 }
